@@ -1,0 +1,13 @@
+name: fleetiq
+version: "1.0.0"
+description: "Reports Hermes session/turn/tool lifecycle to a FleetIQ dashboard (read-only telemetry, agent_runtime=hermes). Opt-in via `hermes plugins enable fleetiq`."
+author: local
+requires_env:
+  - FLEETIQ_API_KEY
+hooks:
+  - on_session_start
+  - on_session_end
+  - pre_llm_call
+  - post_llm_call
+  - pre_tool_call
+  - post_tool_call
