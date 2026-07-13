@@ -21,6 +21,13 @@ Claude Code sessions.
 | `post_tool_call` | `tool_result` |
 | `post_llm_call` | `turn_ended` |
 | `on_session_end` | `turn_ended` (session closed) |
+| `subagent_start` | `session_started` + `user_prompt` for the child's own `session_id` |
+| `subagent_stop` | `turn_ended` (session closed) for the child's `session_id` |
+
+Delegated sub-agents (`delegate_task`, e.g. a scraping worker spun up by the
+main assistant) get their own Hermes `session_id` and are reported as their
+own FleetIQ agent via `subagent_start`/`subagent_stop`, tagged with
+`parent_session_id` so you can tell which conversation spawned them.
 
 ## Install
 
